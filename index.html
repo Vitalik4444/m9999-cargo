@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>M9999 Cargo — карго из Китая в Россию и Казахстан через Алматы</title>
+<meta name="description" content="Карго из Гуанчжоу в Россию и Казахстан. Выкуп с 1688 и Taobao, проверка с фото и видео, упаковка, страховка, доставка фурой через Казахстан. Офисы в Гуанчжоу, Алматы и Москве.">
+<meta name="theme-color" content="#07112e">
+<meta property="og:title" content="M9999 Cargo — карго из Китая до двери">
+<meta property="og:description" content="Гуанчжоу → Алматы → Москва. Выкуп, проверка, упаковка и доставка фурой через Казахстан.">
+<meta property="og:image" content="img/poster.jpg">
+<link rel="icon" href="img/logo-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,700;0,800;1,800;1,900&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Палитра из ролика: небо, закат, белый борт, синий логотип.
+   Шрифты: Exo 2 курсив — заголовки (наклон как у логотипа), Onest — текст. */
+:root{
+  --sky:#f3f6fc; --sky2:#e4ecf8;
+  --ink:#0a1845; --text:#3a4670; --mute:#6a7699;
+  --blue:#1d5cff; --blue2:#004eb2; --navy:#001972; --night:#07112e; --night2:#0f1a40;
+  --sun:#ff8a4c; --sun2:#ffb27a; --peach:#ffe2cc;
+  --grad:linear-gradient(135deg,#2a6dff 0%,#004eb2 50%,#001972 100%);
+  --line:rgba(10,24,69,.1);
+  --display:'Exo 2',system-ui,sans-serif; --body:'Onest',system-ui,sans-serif;
+  --pad:clamp(20px,5vw,80px); --max:1360px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{background:var(--sky);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,svg,canvas{display:block;max-width:100%}
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--body);text-transform:uppercase;letter-spacing:.12em;color:var(--blue2);margin-bottom:20px}
+.eyebrow::before{content:"";width:24px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--sun),var(--sun2))}
+.h1{font:italic 900 clamp(44px,min(7.4vw,12vh),124px)/.92 var(--display);letter-spacing:-.02em;text-transform:uppercase}
+.h2{font:italic 800 clamp(32px,4.4vw,62px)/1.05 var(--display);letter-spacing:-.01em}
+.h3{font:italic 800 clamp(22px,1.8vw,27px)/1.15 var(--display)}
+.blue{color:var(--blue)}
+.lead{font-size:clamp(17px,1.35vw,21px);line-height:1.55;color:var(--text)}
+.sec{padding:clamp(80px,10vw,140px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px 40px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,56px)}
+.sec-head p{max-width:440px;color:var(--text)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:100px;background:var(--blue);color:#fff;font:600 16px var(--body);transition:background .25s,transform .25s;box-shadow:0 8px 24px rgba(29,92,255,.3);white-space:nowrap}
+.btn:hover{background:#3b72ff;transform:translateY(-2px)}
+.btn--glass{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);box-shadow:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn--glass:hover{background:rgba(255,255,255,.22)}
+.btn--white{background:#fff;color:var(--navy);box-shadow:none}
+.btn--white:hover{background:var(--peach)}
+.btn .arr{transition:transform .25s}
+.btn:hover .arr{transform:translateX(3px)}
+.wa-ico{width:20px;height:20px;fill:currentColor;flex:none}
+
+/* ===== Шапка ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .35s,box-shadow .35s;padding-top:env(safe-area-inset-top)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:24px}
+.logo{position:relative;display:block;height:34px;flex:none}
+.logo img{height:34px;width:auto;transition:opacity .35s}
+.logo .lb{position:absolute;left:0;top:0;opacity:0}
+.nav__links{display:flex;gap:30px;font-weight:500;font-size:15px;color:rgba(255,255,255,.9);transition:color .35s}
+.nav__links a:hover{color:var(--sun2)}
+.nav .btn{padding:12px 22px;font-size:15px;box-shadow:none}
+.nav.light{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line)}
+.nav.light .nav__links{color:var(--text)}
+.nav.light .nav__links a:hover{color:var(--blue)}
+.nav.light .lw{opacity:0}
+.nav.light .lb{opacity:1}
+@media (max-width:960px){.nav__links{display:none}.nav .wrap{height:64px}.logo,.logo img{height:24px}.nav .btn{padding:10px 16px;font-size:14px}}
+
+/* ===== ИСТОРИЯ: фура едет от прокрутки ===== */
+.story{position:relative;height:760vh;background:var(--night)}
+.story__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.story canvas{position:absolute;inset:0;width:100%;height:100%}
+.story__shade{position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(0deg,rgba(7,17,46,.9) 0%,rgba(7,17,46,.6) 30%,rgba(7,17,46,0) 58%),
+  linear-gradient(90deg,rgba(7,17,46,.8) 0%,rgba(7,17,46,.5) 32%,rgba(7,17,46,0) 58%),
+  linear-gradient(180deg,rgba(7,17,46,.45) 0%,rgba(7,17,46,0) 16%)}
+.ch{position:absolute;left:0;right:0;bottom:clamp(112px,16vh,170px);color:#fff;opacity:0;transform:translateY(30px);pointer-events:none}
+.ch.on{pointer-events:auto}
+.ch__in{max-width:640px}
+.ch .eyebrow{color:var(--sun2)}
+.ch .h1{color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.25)}
+.ch .h2{color:#fff;font-size:clamp(34px,min(5vw,8.5vh),76px);text-shadow:0 4px 30px rgba(0,0,0,.25)}
+.ch p{margin-top:16px;font-size:clamp(16px,1.3vw,20px);line-height:1.55;color:rgba(255,255,255,.92);max-width:560px;text-shadow:0 1px 12px rgba(7,17,46,.6)}
+.ch__btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.ch__facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.ch__facts span{padding:8px 15px;border-radius:100px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:14px;font-weight:500}
+.ch__num{display:flex;align-items:center;gap:14px;font:600 13px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--sun2);margin-bottom:14px}
+.ch__num b{font:italic 900 clamp(44px,5vw,72px)/.8 var(--display);color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.6);letter-spacing:0}
+#ch0{opacity:1;transform:none}
+
+/* сцена «Граница» — закрывает смену ракурса */
+.border{position:absolute;inset:0;z-index:3;color:#fff;display:grid;place-items:center;padding:90px var(--pad) 120px;transform:translateY(100%);
+  background:radial-gradient(ellipse 70% 60% at 50% 42%,#13308a 0%,#0a1a52 45%,var(--night) 100%)}
+.border::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.2px);background-size:26px 26px;mask:radial-gradient(ellipse at center,#000 30%,transparent 75%);-webkit-mask:radial-gradient(ellipse at center,#000 30%,transparent 75%)}
+.border__in{position:relative;width:min(980px,100%);text-align:center}
+.border__lands{display:grid;grid-template-columns:1fr 1fr;align-items:end;margin-bottom:18px}
+.land{font:600 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);text-align:left}
+.land + .land{text-align:right}
+.land b{display:block;font:italic 900 clamp(26px,3.4vw,46px)/1 var(--display);letter-spacing:0;text-transform:uppercase;color:#fff;margin-top:6px}
+.land + .land b{color:var(--sun2)}
+.road{position:relative;height:84px}
+.road__line{position:absolute;left:0;right:0;bottom:14px;height:3px;border-radius:3px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0 18px,transparent 18px 32px)}
+.road__post{position:absolute;left:50%;bottom:0;width:3px;height:84px;margin-left:-1.5px;background:linear-gradient(180deg,var(--sun),rgba(255,138,76,.1));border-radius:3px;transition:box-shadow .3s}
+.road__post::after{content:"Граница";position:absolute;left:50%;bottom:-26px;transform:translateX(-50%);font:600 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--sun2);white-space:nowrap}
+.road.passed .road__post{box-shadow:0 0 24px 6px rgba(255,138,76,.55)}
+.road__truck{position:absolute;bottom:16px;left:0;width:clamp(110px,13vw,150px);transform:translateX(-50%)}
+.border h2{margin-top:clamp(40px,6vh,56px);font:italic 900 clamp(34px,5vw,72px)/1 var(--display)}
+.border p{margin:16px auto 0;max-width:620px;font-size:clamp(16px,1.3vw,19px);color:rgba(255,255,255,.85)}
+.border__facts{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:22px}
+.border__facts span{padding:8px 15px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);font-size:14px;font-weight:500}
+
+/* шкала маршрута */
+.hud{position:absolute;left:0;right:0;bottom:0;z-index:4;padding-bottom:calc(clamp(20px,4vh,36px) + env(safe-area-inset-bottom))}
+.hud .wrap{display:flex;align-items:center;gap:clamp(16px,3vw,40px)}
+.hud__km{flex:none;color:#fff;font:italic 800 clamp(20px,2vw,30px)/1 var(--display);min-width:150px}
+.hud__km small{display:block;font:600 12px var(--body);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:6px;font-style:normal}
+.track{position:relative;flex:1;height:44px}
+.track__line{position:absolute;left:0;right:0;top:12px;height:3px;border-radius:3px;background:rgba(255,255,255,.22)}
+.track__fill{position:absolute;left:0;top:12px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--sun),var(--sun2));width:0}
+.track__tick{position:absolute;top:4px;width:2px;height:19px;margin-left:-1px;background:rgba(255,255,255,.45);border-radius:2px}
+.track__dot{position:absolute;top:2px;left:0;width:24px;height:24px;margin-left:-12px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 6px rgba(255,138,76,.35)}
+.track__dot i{width:8px;height:8px;border-radius:50%;background:var(--sun)}
+.stop{position:absolute;top:8px;transform:translateX(-50%);text-align:center}
+.stop b{display:block;width:11px;height:11px;margin:0 auto;border-radius:50%;background:var(--night);border:2px solid rgba(255,255,255,.5);transition:.3s}
+.stop span{display:block;margin-top:9px;font-size:13px;font-weight:600;color:rgba(255,255,255,.7);white-space:nowrap;transition:color .3s}
+.stop.done b{background:var(--sun);border-color:var(--sun)}
+.stop.done span{color:#fff}
+.stop.s-first{transform:none;text-align:left}.stop.s-first b{margin:0}
+.stop.s-last{transform:translateX(-100%);text-align:right}.stop.s-last b{margin:0 0 0 auto}
+.hint{position:absolute;right:var(--pad);bottom:clamp(112px,16vh,170px);z-index:4;color:rgba(255,255,255,.85);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:12px;transition:opacity .4s}
+.hint i{width:24px;height:38px;border:2px solid rgba(255,255,255,.7);border-radius:14px;position:relative}
+.hint i::after{content:"";position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:wheel 1.6s ease-in-out infinite}
+@keyframes wheel{0%{opacity:0;transform:translateY(-3px)}40%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
+.loadbar{position:absolute;top:0;left:0;height:3px;background:var(--sun);z-index:60;width:0;transition:width .2s,opacity .5s}
+@media (max-width:760px){
+  .story{height:660vh}
+  .story__shade{background:linear-gradient(180deg,rgba(7,17,46,.55) 0,rgba(7,17,46,0) 13%,rgba(7,17,46,0) 36%,var(--night) calc(56px + 50vh))}
+  .ch{bottom:calc(96px + env(safe-area-inset-bottom))}
+  .ch .h1{font-size:clamp(40px,12vw,56px)}
+  .ch .h2{font-size:clamp(30px,9vw,40px)}
+  .ch p{font-size:16px;margin-top:12px}
+  .ch__btns{margin-top:20px}
+  .ch__btns .btn{flex:1;padding:14px 18px;font-size:15px}
+  .ch__facts{margin-top:14px}
+  .ch__facts span{font-size:13px;padding:7px 12px}
+  .ch__num{margin-bottom:8px}
+  #ch0 .eyebrow{display:none}
+  .hud__km{min-width:0;font-size:19px}
+  .stop span{font-size:11px}
+  .stop.mid span,.stop.s-first span{display:none}
+  .track{margin-right:6px}
+  .hint{display:none}
+  .border{padding:80px 20px 110px}
+  .land{font-size:11px}
+  .road{height:64px}.road__post{height:64px}
+}
+@media (max-height:620px) and (min-width:761px){.ch p{display:none}}
+
+/* ===== Факты ===== */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.fact{padding:38px 26px}
+.fact + .fact{border-left:1px solid var(--line)}
+.fact__n{font:italic 900 clamp(38px,4.2vw,60px)/1 var(--display)}
+.fact__n small{font-size:.42em;color:var(--blue);margin-left:6px}
+.fact__l{margin-top:10px;color:var(--mute);font-size:15px;line-height:1.4}
+@media (max-width:860px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(3){border-left:0}.fact:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:600px){.fact{padding:24px 14px}.fact__l{font-size:14px}}
+
+/* ===== О компании ===== */
+.about{display:grid;grid-template-columns:1fr 1.7fr;gap:60px}
+.about__text{font:500 clamp(22px,2.3vw,36px)/1.4 var(--body);color:var(--ink)}
+.about__text .w{opacity:.2;transition:opacity .25s}
+.about__text .w.lit{opacity:1}
+.about__text em{font-style:normal;color:var(--blue)}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:6px}}
+
+/* ===== Способы доставки: стопка ===== */
+.stack{display:grid;gap:24px}
+.scard{position:sticky;top:calc(104px + var(--i) * 24px);display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:40px;align-items:center;min-height:290px;padding:clamp(26px,3.5vw,52px);border-radius:32px;background:#fff;border:1px solid var(--line);box-shadow:0 -12px 40px -24px rgba(10,24,69,.35);transform-origin:center top;will-change:transform}
+.scard:nth-child(1){background:var(--grad);color:#fff;border-color:transparent}
+.scard:nth-child(3){background:#fff7f0}
+.scard:nth-child(4){background:var(--night);color:#fff;border-color:transparent}
+.scard__name{display:flex;align-items:center;gap:18px}
+.scard__ico{width:64px;height:64px;flex:none;border-radius:18px;background:var(--grad);display:grid;place-items:center}
+.scard:nth-child(1) .scard__ico{background:rgba(255,255,255,.18)}
+.scard__ico svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.scard__name h3{font:italic 900 clamp(38px,4.4vw,68px)/1 var(--display)}
+.scard p{font-size:17px;line-height:1.55;color:var(--text)}
+.scard:nth-child(1) p,.scard:nth-child(4) p{color:rgba(255,255,255,.86)}
+.scard ul{list-style:none;margin-top:12px;display:grid;gap:6px;font-size:15px;color:var(--mute)}
+.scard:nth-child(1) ul,.scard:nth-child(4) ul{color:rgba(255,255,255,.7)}
+.scard li::before{content:"— "}
+.scard__days{font:italic 900 clamp(32px,3.4vw,52px)/1 var(--display)}
+.scard__days small{display:block;font:500 15px var(--body);margin-top:10px;opacity:.7}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:5px 10px;border-radius:100px;background:var(--sun);color:#fff;margin-bottom:12px}
+.stack__note{margin-top:28px;color:var(--mute);font-size:15px;max-width:720px}
+@media (max-width:860px){.scard{grid-template-columns:1fr;gap:14px;top:calc(80px + var(--i) * 14px);min-height:0}.scard__name h3{font-size:40px}.scard__ico{width:52px;height:52px}}
+
+/* ===== Как работаем ===== */
+.proc{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,6vw,100px)}
+.proc__side{position:sticky;top:120px;align-self:start}
+.proc__side p{margin-top:20px;color:var(--text);max-width:400px}
+.proc__big{margin-top:40px;font:italic 900 clamp(90px,12vw,190px)/.8 var(--display);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.steps{position:relative;padding-left:44px}
+.steps__line{position:absolute;left:11px;top:10px;bottom:10px;width:3px;border-radius:3px;background:var(--sky2)}
+.steps__fill{position:absolute;left:11px;top:10px;width:3px;border-radius:3px;background:linear-gradient(180deg,var(--blue),var(--sun));height:0}
+.step{position:relative;padding:24px 0 52px;opacity:.35;transition:opacity .4s}
+.step:last-child{padding-bottom:10px}
+.step.on{opacity:1}
+.step::before{content:"";position:absolute;left:-40px;top:32px;width:17px;height:17px;border-radius:50%;background:var(--sky);border:3px solid #c8d3ea;transition:.4s}
+.step.on::before{background:var(--blue);border-color:#fff;box-shadow:0 0 0 4px rgba(29,92,255,.25)}
+.step__n{font:600 13px var(--body);color:var(--blue2);letter-spacing:.12em}
+.step h3{font:italic 800 clamp(26px,2.6vw,40px)/1.1 var(--display);margin:6px 0 10px}
+.step p{color:var(--text);font-size:17px;line-height:1.6;max-width:520px}
+@media (max-width:860px){.proc{grid-template-columns:1fr}.proc__side{position:static}.proc__big{display:none}.step{padding-bottom:36px}.step p{font-size:16px}}
+
+/* ===== Калькулятор ===== */
+.dark{background:var(--night);color:#f1f4ff}
+.dark .eyebrow{color:#9dbaff}
+.dark .lead{color:#c3cbe4}
+.calc{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.calc__box{background:var(--night2);border:1px solid rgba(225,232,255,.12);border-radius:28px;padding:clamp(22px,3vw,40px)}
+.field{margin-bottom:26px}
+.field__label{display:flex;justify-content:space-between;font-weight:600;font-size:15px;color:#c3cbe4;margin-bottom:12px}
+.field__label b{color:#fff}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(225,232,255,.16);border-radius:6px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--blue);border:4px solid #fff;cursor:grab}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--blue);border:4px solid #fff;cursor:grab}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:var(--night);padding:6px;border-radius:16px;border:1px solid rgba(225,232,255,.12)}
+.seg button{padding:12px 6px;border-radius:12px;font-weight:600;font-size:15px;color:#c3cbe4;transition:background .2s,color .2s}
+.seg button.on{background:var(--blue);color:#fff}
+.chk{display:flex;flex-wrap:wrap;gap:8px}
+.chk label{cursor:pointer;position:relative}
+.chk input{position:absolute;opacity:0}
+.chk span{display:inline-block;padding:10px 16px;border-radius:100px;border:1px solid rgba(225,232,255,.16);font-size:15px;color:#c3cbe4;transition:.2s}
+.chk input:checked + span{background:#fff;color:var(--navy);border-color:#fff}
+.chk input:focus-visible + span{outline:3px solid var(--sun)}
+.calc__res{border-top:1px solid rgba(225,232,255,.12);padding-top:24px;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.calc__sum{font:italic 900 clamp(40px,4.2vw,60px)/1 var(--display)}
+.calc__sum small{font-size:.42em;color:#98a2c2;font-style:normal;font-family:var(--body);font-weight:600}
+.calc__note{color:#98a2c2;font-size:14px;margin-top:8px}
+.terms{margin-top:32px}
+.terms div{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid rgba(225,232,255,.12);font-size:16px}
+.terms div span:last-child{color:var(--sun2);font-weight:600;text-align:right}
+.formula{margin-top:24px;padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(225,232,255,.12);font-size:15px;color:#c3cbe4}
+.formula b{color:#fff}
+@media (max-width:960px){.calc{grid-template-columns:1fr}.seg{grid-template-columns:1fr 1fr}.calc__res .btn{width:100%}}
+
+/* ===== Почему мы ===== */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column;gap:12px}
+.card p{color:var(--text);font-size:16px;line-height:1.55}
+.card__ico{width:48px;height:48px;border-radius:14px;background:var(--sky2);display:grid;place-items:center;margin-bottom:6px}
+.card__ico svg{width:24px;height:24px;stroke:var(--blue);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.card--blue{background:var(--grad);border-color:transparent;color:#fff}
+.card--blue p{color:rgba(255,255,255,.88)}
+.card--blue .card__ico{background:rgba(255,255,255,.16)}.card--blue .card__ico svg{stroke:#fff}
+.card--sun{background:linear-gradient(160deg,#fff3ea,#ffe2cc);border-color:transparent}
+.card--sun .card__ico{background:#fff}.card--sun .card__ico svg{stroke:var(--sun)}
+.card--photo{grid-row:span 2;padding:0!important;overflow:hidden;min-height:340px;background:url(img/road_0_3.jpg) 30% center/cover;justify-content:flex-end}
+.card--photo div{padding:28px;color:#fff;background:linear-gradient(180deg,transparent,rgba(7,17,46,.88) 40%)}
+.card--photo p{color:rgba(255,255,255,.88);margin-top:8px}
+@media (max-width:960px){.why{grid-template-columns:1fr 1fr}.card--photo{grid-column:span 2;grid-row:auto;min-height:300px}}
+@media (max-width:600px){.why{grid-template-columns:1fr}.card--photo{grid-column:auto}.card{padding:26px}}
+
+/* ===== FAQ ===== */
+.faq{display:grid;grid-template-columns:1fr 1.6fr;gap:60px}
+.faq__side p{margin-top:20px;color:var(--text)}
+.faq__side .btn{margin-top:24px}
+.q{border-bottom:1px solid var(--line)}
+.q:first-child{border-top:1px solid var(--line)}
+.q button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;text-align:left;font:600 clamp(17px,1.4vw,20px)/1.35 var(--body)}
+.q button i{flex:none;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(10,24,69,.18);position:relative;transition:transform .3s,background .3s,color .3s}
+.q button i::before,.q button i::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:2px;background:currentColor;transform:translate(-50%,-50%)}
+.q button i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.q.open button i{transform:rotate(45deg);background:var(--blue);border-color:var(--blue);color:#fff}
+.q__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.q.open .q__a{grid-template-rows:1fr}
+.q__a > div{overflow:hidden}
+.q__a p{padding:0 56px 22px 0;color:var(--text);line-height:1.65}
+@media (max-width:860px){.faq{grid-template-columns:1fr;gap:24px}.q__a p{padding-right:0}}
+
+/* ===== Контакты ===== */
+.contacts{position:relative;background:var(--grad);color:#fff;padding:clamp(80px,10vw,140px) 0;overflow:hidden}
+.contacts::before{content:"";position:absolute;right:-10%;top:-30%;width:70%;height:120%;background:radial-gradient(closest-side,rgba(255,150,90,.28),transparent);pointer-events:none}
+.contacts .wrap{position:relative}
+.contacts .eyebrow{color:#fff}
+.contacts__head{display:flex;justify-content:space-between;align-items:end;gap:24px 30px;flex-wrap:wrap;margin-bottom:clamp(36px,4vw,56px)}
+.contacts__head .h2{font-size:clamp(42px,6vw,88px)}
+.contacts__head p{margin-top:14px;color:rgba(255,255,255,.85);max-width:520px}
+.contacts__btns{display:flex;gap:12px;flex-wrap:wrap}
+.offices{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.office{background:#fff;color:var(--ink);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.office__top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--mute);font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.flag{padding:5px 10px;border-radius:100px;background:var(--blue);color:#fff;letter-spacing:.04em}
+.office .h3{font-size:clamp(26px,2.2vw,32px)}
+.office__role{font-size:14px;color:var(--mute);margin-top:-8px}
+.office__ph{display:grid;gap:10px}
+.office__ph a{font-weight:600;font-size:17px;font-variant-numeric:tabular-nums;transition:color .2s}
+.office__ph a:hover{color:var(--blue)}
+.office__ph em{display:block;font-style:normal;font-weight:500;font-size:13px;color:var(--mute)}
+.office p{color:var(--text);font-size:15px;line-height:1.5;margin-top:auto}
+.office .cn{display:block;margin-top:6px;font-size:13px;color:var(--mute)}
+.office--night{background:var(--night);color:#fff}
+.office--night .office__top,.office--night .office__role{color:#98a2c2}
+.office--night p{color:#c3cbe4}
+.office--night .h3{font-size:clamp(20px,1.6vw,24px);word-break:break-word}
+.office--night .flag{background:var(--sun)}
+@media (max-width:1100px){.offices{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.offices{grid-template-columns:1fr}.contacts__btns .btn{flex:1}.wa{width:50px;height:50px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}.wa svg{width:26px;height:26px}}
+
+footer{background:var(--night);color:#98a2c2;padding:70px 0 calc(34px + env(safe-area-inset-bottom))}
+.foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px;font-size:15px;line-height:1.7}
+.foot b{display:block;color:#fff;font-weight:600;margin-bottom:4px}
+.foot img{height:32px;width:auto;margin-bottom:14px}
+.foot a:hover{color:#fff}
+.foot__logo{margin-top:60px;opacity:.07}
+.foot__logo img{width:100%;height:auto}
+.foot__bot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:30px;padding-top:24px;border-top:1px solid rgba(225,232,255,.12);font-size:14px}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}.foot > div:first-child{grid-column:span 2}}
+
+/* плавающая кнопка WhatsApp */
+.wa{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom));z-index:45;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);transform:scale(0);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.wa.on{transform:scale(1)}
+.wa svg{width:30px;height:30px;fill:#fff}
+
+.modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px;background:rgba(7,17,46,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .25s;overflow-y:auto}
+.modal.on{opacity:1;pointer-events:auto}
+.modal__box{background:#fff;color:var(--ink);border-radius:28px;padding:clamp(24px,4vw,44px);width:min(540px,100%);position:relative;transform:translateY(16px);transition:transform .3s}
+.modal.on .modal__box{transform:none}
+.modal__logo{height:28px;width:auto;margin-bottom:18px}
+.modal__box .h3{font-size:clamp(26px,3vw,30px);margin-bottom:8px}
+.modal__sub{color:var(--text);font-size:15px;margin-bottom:20px}
+.modal__box input,.modal__box textarea,.modal__box select{width:100%;padding:15px 16px;border-radius:14px;border:1.5px solid #d5dcef;background:#fff;font:500 16px var(--body);color:var(--ink);margin-bottom:12px;outline:none}
+.modal__box input:focus,.modal__box textarea:focus,.modal__box select:focus{border-color:var(--blue)}
+.modal__row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.modal__box .btn{width:100%;margin-top:6px}
+.modal__x{position:absolute;top:16px;right:16px;width:42px;height:42px;border-radius:50%;background:var(--sky2);font-size:22px;line-height:1}
+.modal__alt{margin-top:14px;text-align:center;font-size:14px;color:var(--mute)}
+.modal__alt a{color:#1a9e4b;font-weight:600}
+.ok{display:none;text-align:center;padding:10px 0}
+.ok .h3{margin:14px 0 10px}
+.ok__mark{width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto}
+@media (max-width:480px){.modal__row{grid-template-columns:1fr;gap:0}}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hint i::after{animation:none}.about__text .w{opacity:1}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 2.9 1.1 3.4.9 4.1.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></symbol>
+</svg>
+
+<nav class="nav" id="nav" aria-label="Главное меню">
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="M9999 Cargo — в начало"><img class="lw" src="img/logo-white.png" alt="M9999 Cargo"><img class="lb" src="img/logo-blue.png" alt=""></a>
+    <div class="nav__links">
+      <a href="#services">Доставка</a>
+      <a href="#process">Как работаем</a>
+      <a href="#calc">Стоимость</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <button class="btn" data-open>Рассчитать</button>
+  </div>
+</nav>
+
+<!-- ИСТОРИЯ: прокрутка ведёт фуру -->
+<section class="story" id="top" aria-label="Как едет ваш груз">
+  <div class="story__pin">
+    <div class="loadbar" id="loadbar"></div>
+    <canvas id="cv" role="img" aria-label="Фура M9999 Cargo едет по трассе"></canvas>
+    <div class="story__shade"></div>
+
+    <div class="ch on" id="ch0"><div class="wrap"><div class="ch__in">
+      <div class="eyebrow">Карго Китай — Казахстан — Россия</div>
+      <h1 class="h1">Карго<br><span style="color:var(--sun2)">из Китая</span><br>до двери</h1>
+      <p>Выкупаем товар на 1688, Taobao и у фабрик, проверяем, упаковываем и везём фурой через Казахстан. Свои офисы в Гуанчжоу, Алматы и Москве.</p>
+      <div class="ch__btns">
+        <button class="btn" data-open>Рассчитать доставку <span class="arr">→</span></button>
+        <a href="https://wa.me/79168843466" target="_blank" rel="noopener" class="btn btn--glass"><svg class="wa-ico"><use href="#wa"/></svg>WhatsApp</a>
+      </div>
+    </div></div></div>
+
+    <div class="ch" id="ch1"><div class="wrap"><div class="ch__in">
+      <div class="ch__num"><b>01</b>Гуанчжоу</div>
+      <h2 class="h2">Выкуп и проверка</h2>
+      <p>Заказываем у поставщика сами или принимаем то, что вы купили. В офисе в Гуанчжоу пересчитываем товар, ищем брак и присылаем фото и видео — до отправки, а не после.</p>
+      <div class="ch__facts"><span>1688 · Taobao · фабрики</span><span>Фото и видео</span><span>Обрешётка и паллеты</span></div>
+    </div></div></div>
+
+    <div class="ch" id="ch2"><div class="wrap"><div class="ch__in">
+      <div class="ch__num"><b>02</b>Алматы</div>
+      <h2 class="h2">Середина пути</h2>
+      <p>После границы груз приезжает в Алматы, где работает наш второй офис. Здесь его можно забрать или отправить дальше по Казахстану.</p>
+      <div class="ch__facts"><span>Офис в Алматы</span><span>Доставка по Казахстану</span></div>
+    </div></div></div>
+
+    <div class="ch" id="ch3"><div class="wrap"><div class="ch__in">
+      <div class="ch__num"><b>03</b>Москва</div>
+      <h2 class="h2">До вашей двери</h2>
+      <p>Из Москвы везём в любой город России или на склад Wildberries и Ozon. Один менеджер ведёт груз весь путь — от заявки до получения.</p>
+      <div class="ch__btns"><button class="btn" data-open>Отправить груз <span class="arr">→</span></button></div>
+    </div></div></div>
+
+    <!-- Граница: закрывает смену ракурса -->
+    <div class="border" id="border"><div class="border__in">
+      <div class="border__lands">
+        <div class="land">Отсюда<b>Китай</b></div>
+        <div class="land">Сюда<b>Казахстан</b></div>
+      </div>
+      <div class="road" id="road">
+        <div class="road__line"></div>
+        <div class="road__post"></div>
+        <svg class="road__truck" id="bTruck" viewBox="0 0 150 54" aria-hidden="true">
+          <rect x="2" y="4" width="104" height="36" rx="3" fill="#fff"/>
+          <text x="54" y="28" text-anchor="middle" font-family="Exo 2" font-style="italic" font-weight="900" font-size="15" fill="#1d5cff">M9999</text>
+          <path d="M110 14h20l14 14v12h-34z" fill="#fff"/><path d="M114 18h14l9 9h-23z" fill="#0a1a52"/>
+          <rect x="2" y="40" width="144" height="4" fill="#9fb2df"/>
+          <circle cx="22" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/><circle cx="40" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/>
+          <circle cx="86" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/><circle cx="130" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/>
+        </svg>
+      </div>
+      <h2>Границу проходим за вас</h2>
+      <p>Оформление на переходе Китай — Казахстан берём на себя. Вам не нужно искать брокера и ехать на границу — статус груза приходит в мессенджер.</p>
+      <div class="border__facts"><span>Документы — на нас</span><span>Груз застрахован</span><span>Статус в WhatsApp</span></div>
+    </div></div>
+
+    <div class="hint" id="hint"><i></i>Листайте</div>
+
+    <div class="hud" aria-hidden="true">
+      <div class="wrap">
+        <div class="hud__km">≈ <span id="km">0</span> км<small id="kmCity">Гуанчжоу</small></div>
+        <div class="track">
+          <div class="track__line"></div>
+          <div class="track__fill" id="fill"></div>
+          <div class="track__tick" id="tickBorder"></div>
+          <div class="stop s-first done" data-km="0"><b></b><span>Гуанчжоу</span></div>
+          <div class="stop mid" data-km="3300"><b></b><span>Урумчи</span></div>
+          <div class="stop" data-km="4350"><b></b><span>Алматы</span></div>
+          <div class="stop s-last" data-km="8250"><b></b><span>Москва</span></div>
+          <div class="track__dot" id="dot"><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ФАКТЫ -->
+<div class="wrap">
+  <div class="facts">
+    <div class="fact rv"><div class="fact__n"><span class="count" data-to="3">3</span><small>офиса</small></div><div class="fact__l">Гуанчжоу, Алматы и Москва — свои люди на всём пути</div></div>
+    <div class="fact rv"><div class="fact__n"><span class="count" data-to="8250">8 250</span><small>км</small></div><div class="fact__l">маршрут Гуанчжоу — Алматы — Москва</div></div>
+    <div class="fact rv"><div class="fact__n"><span class="count" data-to="4">4</span><small>способа</small></div><div class="fact__l">авто, авиа, ж/д и море — под срок и бюджет</div></div>
+    <div class="fact rv"><div class="fact__n"><span class="count" data-to="1">1</span><small>менеджер</small></div><div class="fact__l">ведёт ваш груз от заявки до получения</div></div>
+  </div>
+</div>
+
+<!-- О КОМПАНИИ -->
+<section class="sec" aria-label="О компании">
+  <div class="wrap about">
+    <div><div class="eyebrow">О компании</div></div>
+    <p class="about__text" id="about">M9999 Cargo — это не посредник между посредниками. Мы сами ездим к поставщикам в <em>Гуанчжоу</em>, сами ведём груз через <em>Алматы</em> и сами выдаём его в <em>Москве</em>. Вы общаетесь с одним менеджером на русском и всегда знаете, где ваш товар.</p>
+  </div>
+</section>
+
+<!-- СПОСОБЫ ДОСТАВКИ -->
+<section class="sec" id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Способы доставки</div><h2 class="h2">Как привезти <span class="blue">ваш груз</span></h2></div>
+      <p>Подбираем способ под груз, срок и бюджет. Если сомневаетесь — посчитаем два варианта, и вы выберете.</p>
+    </div>
+    <div class="stack" id="stack">
+      <article class="scard" style="--i:0">
+        <div class="scard__name"><div class="scard__ico"><svg viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></div><h3>Авто</h3></div>
+        <div><span class="tag">Чаще всего</span><p>Фурой через Казахстан. Оптимально по цене и сроку для сборных грузов и товаров для маркетплейсов.</p><ul><li>одежда, обувь, товары для дома</li><li>от 30 кг</li></ul></div>
+        <div class="scard__days">18–25 дней<small>от $2.4 за кг</small></div>
+      </article>
+      <article class="scard" style="--i:1">
+        <div class="scard__name"><div class="scard__ico"><svg viewBox="0 0 24 24"><path d="M2.5 13.5l19-7-5 13-3.5-5.5z"/><path d="M13 14l8.5-7.5"/></svg></div><h3>Авиа</h3></div>
+        <div><p>Когда товар нужен срочно: образцы, электроника, небольшие дорогие партии.</p><ul><li>от 5 кг</li><li>самый быстрый способ</li></ul></div>
+        <div class="scard__days">5–10 дней<small>от $6.5 за кг</small></div>
+      </article>
+      <article class="scard" style="--i:2">
+        <div class="scard__name"><div class="scard__ico"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 10h14M8 20l-2 2M16 20l2 2M9 16v.01M15 16v.01"/></svg></div><h3>Ж/Д</h3></div>
+        <div><p>Крупные и тяжёлые партии по стабильной цене: сборные вагоны и контейнеры.</p><ul><li>оборудование, стройматериалы</li><li>от 100 кг</li></ul></div>
+        <div class="scard__days">25–35 дней<small>от $1.8 за кг</small></div>
+      </article>
+      <article class="scard" style="--i:3">
+        <div class="scard__name"><div class="scard__ico"><svg viewBox="0 0 24 24"><path d="M3 14h18l-2.5 5h-13zM6 14V9h12v5M10 9V5h4v4"/></svg></div><h3>Море</h3></div>
+        <div><p>Самый выгодный вариант для больших объёмов, если сроки не горят.</p><ul><li>контейнеры FCL и LCL</li><li>от 1 м³</li></ul></div>
+        <div class="scard__days">40–55 дней<small>от $1.1 за кг</small></div>
+      </article>
+    </div>
+    <p class="stack__note">Цены ориентировочные: итог зависит от плотности груза и считается после взвешивания в Гуанчжоу. Для ИП и компаний — белая доставка с документами.</p>
+  </div>
+</section>
+
+<!-- КАК РАБОТАЕМ -->
+<section class="sec" id="process" style="padding-top:40px">
+  <div class="wrap proc">
+    <div class="proc__side">
+      <div class="eyebrow">Как работаем</div>
+      <h2 class="h2">Шесть шагов <span class="blue">до вашей двери</span></h2>
+      <p>Вы пишете один раз — дальше всё делаем мы и присылаем статус на каждом шаге.</p>
+      <div class="proc__big" id="stepBig" aria-hidden="true">01</div>
+    </div>
+    <div class="steps" id="steps">
+      <div class="steps__line"></div><div class="steps__fill" id="stepsFill"></div>
+      <div class="step"><div class="step__n">ШАГ 01</div><h3>Заявка</h3><p>Присылаете в WhatsApp или WeChat ссылки, фото или список товаров. Менеджер считает доставку в тот же день.</p></div>
+      <div class="step"><div class="step__n">ШАГ 02</div><h3>Выкуп</h3><p>Платим поставщику в юанях и договариваемся о цене. Если покупаете сами — даём адрес нашего офиса в Гуанчжоу.</p></div>
+      <div class="step"><div class="step__n">ШАГ 03</div><h3>Приёмка</h3><p>Принимаем товар, взвешиваем и меряем объём. Заказы от разных поставщиков собираем в одну партию.</p></div>
+      <div class="step"><div class="step__n">ШАГ 04</div><h3>Проверка</h3><p>Пересчитываем, ищем брак, присылаем фото и видео. Брак возвращаем поставщику, пока груз ещё в Китае.</p></div>
+      <div class="step"><div class="step__n">ШАГ 05</div><h3>Упаковка и страховка</h3><p>Коробки, обрешётка, паллеты, маркировка для Wildberries и Ozon. Страхуем груз на его стоимость.</p></div>
+      <div class="step"><div class="step__n">ШАГ 06</div><h3>Доставка</h3><p>Фура идёт через Казахстан. Забираете груз в Алматы, в Москве или получаете у двери.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- КАЛЬКУЛЯТОР -->
+<section class="sec dark" id="calc">
+  <div class="wrap calc">
+    <div>
+      <div class="eyebrow">Стоимость</div>
+      <h2 class="h2">Сколько стоит <span style="color:var(--sun2)">привезти?</span></h2>
+      <p class="lead" style="margin-top:20px">Предварительный расчёт за минуту. Точную цену назовём после взвешивания в Гуанчжоу — и она не изменится по дороге.</p>
+      <div class="formula"><b>Как считаем.</b> Делим вес на объём — получаем плотность. Тяжёлый груз считаем за килограмм, лёгкий и объёмный — с наценкой за объём.</div>
+      <div class="terms">
+        <div><span>Страховка груза</span><span>2% от стоимости</span></div>
+        <div><span>Хранение в Гуанчжоу</span><span>7 дней бесплатно</span></div>
+        <div><span>Фото и видео товара</span><span>бесплатно</span></div>
+        <div><span>Минимальная партия</span><span>от 30 кг</span></div>
+      </div>
+    </div>
+    <div class="calc__box rv">
+      <div class="field">
+        <div class="field__label" id="segLbl">Способ доставки</div>
+        <div class="seg" id="seg" role="radiogroup" aria-labelledby="segLbl">
+          <button class="on" role="radio" aria-checked="true" data-rate="2.4" data-days="18–25">Авто</button>
+          <button role="radio" aria-checked="false" data-rate="6.5" data-days="5–10">Авиа</button>
+          <button role="radio" aria-checked="false" data-rate="1.8" data-days="25–35">Ж/Д</button>
+          <button role="radio" aria-checked="false" data-rate="1.1" data-days="40–55">Море</button>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="w">Вес <b><span id="wOut">150</span> кг</b></label>
+        <input type="range" id="w" min="30" max="3000" step="10" value="150">
+      </div>
+      <div class="field">
+        <label class="field__label" for="v">Объём <b><span id="vOut">1.0</span> м³</b></label>
+        <input type="range" id="v" min="0.1" max="30" step="0.1" value="1">
+      </div>
+      <div class="field">
+        <div class="field__label">Дополнительно</div>
+        <div class="chk">
+          <label><input type="checkbox" data-add="0.3"><span>Обрешётка</span></label>
+          <label><input type="checkbox" data-add="0.15" checked><span>Проверка товара</span></label>
+          <label><input type="checkbox" data-add="0.2"><span>Маркировка WB / Ozon</span></label>
+          <label><input type="checkbox" data-add="0.1"><span>До двери</span></label>
+        </div>
+      </div>
+      <div class="calc__res">
+        <div>
+          <div class="calc__sum" aria-live="polite">$<span id="sum">0</span> <small>≈ <span id="rub">0</span> ₽</small></div>
+          <div class="calc__note">Срок <span id="days">18–25</span> дней · плотность <span id="dens">150</span> кг/м³</div>
+        </div>
+        <button class="btn" data-open>Точный расчёт <span class="arr">→</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОЧЕМУ МЫ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div><div class="eyebrow">Почему M9999</div><h2 class="h2">Без сюрпризов <span class="blue">в дороге</span></h2></div><p>Главные страхи при доставке из Китая — доплаты, бой и потери. Вот как мы их убираем.</p></div>
+    <div class="why">
+      <div class="card card--photo rv"><div><h3 class="h3">Свои люди на всём маршруте</h3><p>Гуанчжоу, Алматы, Москва — в каждой точке наш офис и наш сотрудник, а не подрядчик.</p></div></div>
+      <div class="card card--blue rv"><div class="card__ico"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3 class="h3">Цена не растёт в пути</h3><p>Считаем по фактическому весу и объёму в Гуанчжоу и называем итог до отправки. Доплат «за границу» нет.</p></div>
+      <div class="card card--sun rv"><div class="card__ico"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></div><h3 class="h3">Видите товар до отправки</h3><p>Фото и видео каждой партии. Брак меняем у поставщика, пока груз в Китае.</p></div>
+      <div class="card rv"><div class="card__ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3 class="h3">Страховка груза</h3><p>Страхуем на заявленную стоимость. Если груз повредят или потеряют — возмещаем.</p></div>
+      <div class="card rv"><div class="card__ico"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></div><h3 class="h3">Белая доставка</h3><p>Для ИП и компаний — с документами и растаможкой. Подходит для продаж на маркетплейсах.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="padding-top:0">
+  <div class="wrap faq">
+    <div class="faq__side">
+      <div class="eyebrow">Вопросы</div><h2 class="h2">Часто спрашивают</h2>
+      <p>Не нашли ответ? Напишите — ответим в WhatsApp.</p>
+      <a href="https://wa.me/79168843466" target="_blank" rel="noopener" class="btn"><svg class="wa-ico"><use href="#wa"/></svg>Задать вопрос</a>
+    </div>
+    <div>
+      <div class="q"><button aria-expanded="false">Как считается стоимость доставки?<i></i></button><div class="q__a"><div><p>По плотности груза: вес делим на объём. Плотный груз считаем за килограмм, лёгкий и объёмный — за кубометр. Итоговую цену называем после взвешивания и замера в Гуанчжоу, до отправки.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Карго или белая доставка — что выбрать?<i></i></button><div class="q__a"><div><p>Карго — быстрее и дешевле: оформление на границе берём на себя, вы платите за килограмм. Белая доставка — с полным пакетом документов и растаможкой; она нужна, если вы продаёте через ИП или компанию и вам нужны документы на товар. Подскажем, что подходит именно вам.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Можно купить товар самому и отправить через вас?<i></i></button><div class="q__a"><div><p>Да. Менеджер даст адрес нашего офиса в Гуанчжоу и ваш код для маркировки. Поставщик отправляет товар к нам, мы принимаем, проверяем и включаем в ближайшую отправку.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Возите в Казахстан?<i></i></button><div class="q__a"><div><p>Да. Груз идёт через Казахстан, в Алматы у нас офис: ул. Бокейханова, 271/1, телефон +7 708 848 35 40. Забрать можно там или заказать доставку по Казахстану.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Какой минимальный вес отправки?<i></i></button><div class="q__a"><div><p>От 30 кг для авто. Если товара меньше — копим его вместе с вашими следующими заказами: первые 7 дней хранения в Гуанчжоу бесплатно.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Как оплатить товар и доставку?<i></i></button><div class="q__a"><div><p>Вы платите нам в рублях или тенге, мы платим поставщику в юанях. Курс фиксируем в день оплаты. Доставку оплачиваете по итоговому расчёту после взвешивания.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Что будет, если груз повредят или потеряют?<i></i></button><div class="q__a"><div><p>Застрахованный груз возмещаем по заявленной стоимости. Страховка — 2% от стоимости товара, оформляется при отправке. Совет: при получении снимайте видео вскрытия — так проще разобраться, если что-то не так.</p></div></div></div>
+      <div class="q"><button aria-expanded="false">Какие товары вы не возите?<i></i></button><div class="q__a"><div><p>Оружие, лекарства, продукты питания, жидкости и аккумуляторы без сертификатов, подделки известных брендов. По спорным позициям спросите менеджера до покупки.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="contacts" id="contacts">
+  <div class="wrap">
+    <div class="contacts__head">
+      <div><div class="eyebrow">Контакты</div><h2 class="h2">Везём? Пишите.</h2><p>Пришлите ссылки или фото товара — посчитаем доставку в тот же день.</p></div>
+      <div class="contacts__btns">
+        <a href="https://wa.me/79168843466" target="_blank" rel="noopener" class="btn btn--white"><svg class="wa-ico" style="color:#1a9e4b"><use href="#wa"/></svg>WhatsApp</a>
+        <button class="btn btn--glass" data-open>Оставить заявку</button>
+      </div>
+    </div>
+    <div class="offices">
+      <div class="office rv">
+        <div class="office__top"><span class="flag">CN</span>Китай</div>
+        <h3 class="h3">Гуанчжоу</h3>
+        <div class="office__role">выкуп, приёмка, проверка</div>
+        <div class="office__ph">
+          <a href="tel:+8613318775137">+86 133 1877 5137</a>
+          <a href="tel:+8613070210030">+86 130 7021 0030</a>
+          <a href="https://wa.me/8618127897176" target="_blank" rel="noopener">+86 181 2789 7176 <em>WeChat · WhatsApp</em></a>
+        </div>
+        <p>Район Ливань, Люхуа Синьцзе, напротив ресторана «Таоюань»<span class="cn">广州市荔湾区流花新街桃园湘菜对面 M9999Cargo</span></p>
+      </div>
+      <div class="office rv">
+        <div class="office__top"><span class="flag">KZ</span>Казахстан</div>
+        <h3 class="h3">Алматы</h3>
+        <div class="office__role">выдача и доставка по Казахстану</div>
+        <div class="office__ph">
+          <a href="tel:+77088483540">+7 708 848 35 40 <em>звонок</em></a>
+          <a href="https://wa.me/77088483540" target="_blank" rel="noopener">Написать в WhatsApp</a>
+        </div>
+        <p>ул. Бокейханова, 271/1</p>
+      </div>
+      <div class="office rv">
+        <div class="office__top"><span class="flag">RU</span>Россия</div>
+        <h3 class="h3">Москва</h3>
+        <div class="office__role">выдача и доставка по России</div>
+        <div class="office__ph">
+          <a href="https://wa.me/79168843466" target="_blank" rel="noopener">+7 916 884 34 66 <em>WhatsApp</em></a>
+        </div>
+        <p>ТЦ «1000 мелочей», офис 2у-15<br>Тихорецкий бульвар, д. 1, стр. 19</p>
+      </div>
+      <a href="mailto:m9999cargo@yandex.com" class="office office--night rv">
+        <div class="office__top"><span class="flag">@</span>Почта</div>
+        <h3 class="h3">m9999cargo@<wbr>yandex.com</h3>
+        <div class="office__role">для документов и счетов</div>
+        <p>Пришлите ссылки на товар или фото — посчитаем доставку.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div><img src="img/logo-white.png" alt="M9999 Cargo">Карго из Китая в Россию и Казахстан.<br>Гуанчжоу → Алматы → Москва.<br><a href="mailto:m9999cargo@yandex.com">m9999cargo@yandex.com</a></div>
+      <div><b>Гуанчжоу</b><a href="tel:+8613318775137">+86 133 1877 5137</a><br><a href="https://wa.me/8618127897176">+86 181 2789 7176</a> (WeChat)</div>
+      <div><b>Алматы</b>ул. Бокейханова, 271/1<br><a href="tel:+77088483540">+7 708 848 35 40</a></div>
+      <div><b>Москва</b>Тихорецкий б-р, 1, стр. 19<br><a href="https://wa.me/79168843466">+7 916 884 34 66</a></div>
+    </div>
+    <div class="foot__logo" aria-hidden="true"><img src="img/logo-white.png" alt=""></div>
+    <div class="foot__bot"><span>© 2026 M9999 Cargo</span><span>В Гуанчжоу сейчас <span id="gzTime">--:--</span> (UTC+8)</span></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/79168843466" target="_blank" rel="noopener" class="wa" id="waBtn" aria-label="Написать в WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal__box">
+    <button class="modal__x" data-close aria-label="Закрыть">×</button>
+    <form id="form">
+      <img class="modal__logo" src="img/logo-blue.png" alt="M9999 Cargo">
+      <h3 class="h3" id="mTitle">Расчёт доставки</h3>
+      <p class="modal__sub">Ответим в тот же день и назовём цену и срок.</p>
+      <input required name="name" placeholder="Имя" autocomplete="name">
+      <input required name="phone" placeholder="Телефон, WhatsApp или WeChat" autocomplete="tel" inputmode="tel">
+      <div class="modal__row">
+        <select name="to" aria-label="Куда"><option>В Россию</option><option>В Казахстан</option></select>
+        <select name="type" aria-label="Способ"><option>Авто</option><option>Авиа</option><option>Ж/Д</option><option>Море</option><option>Пока не знаю</option></select>
+      </div>
+      <textarea name="msg" rows="3" placeholder="Что везём? Вес, объём, ссылки"></textarea>
+      <button class="btn" type="submit">Получить расчёт <span class="arr">→</span></button>
+      <p class="modal__alt">или сразу в <a href="https://wa.me/79168843466" target="_blank" rel="noopener">WhatsApp</a></p>
+    </form>
+    <div class="ok" id="ok"><div class="ok__mark">✓</div><h3 class="h3">Заявка принята</h3><p>Менеджер свяжется с вами. Если срочно — напишите в WhatsApp: +7 916 884 34 66.</p></div>
+  </div>
+</div>
+
+<script>
+(() => {
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const range = (p, a, b) => clamp((p - a) / (b - a));
+const ease = t => t < .5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
+const lerpKeys = (p, K) => { for (let i = 1; i < K.length; i++) if (p <= K[i][0]) return K[i-1][1] + (K[i][1] - K[i-1][1]) * range(p, K[i-1][0], K[i][0]); return K[K.length-1][1]; };
+
+/* ================= ИСТОРИЯ: кадры видео по прокрутке ================= */
+const FRAMES = 149, CUT = 75;                 // 0–74 — первый ракурс, 75–148 — второй
+const dir = innerWidth < 900 ? 'frames-m' : 'frames';
+const imgs = new Array(FRAMES);
+const cv = $('#cv'), ctx = cv.getContext('2d');
+let loaded = 0, dirty = true;
+
+function load(i){
+  return new Promise(res => {
+    const im = new Image();
+    im.decoding = 'async';
+    im.onload = im.onerror = () => { loaded++; dirty = true; $('#loadbar').style.width = (loaded / FRAMES * 100) + '%'; if (loaded === FRAMES) $('#loadbar').style.opacity = 0; res(); };
+    im.src = `${dir}/f${String(i + 1).padStart(3, '0')}.webp`;
+    imgs[i] = im;
+  });
+}
+// первый кадр → каждый 4-й (черновик) → остальные
+(async () => {
+  await load(0);
+  const order = [];
+  for (let i = 4; i < FRAMES; i += 4) order.push(i);
+  for (let i = 1; i < FRAMES; i++) if (i % 4) order.push(i);
+  for (let k = 0; k < order.length; k += 8) await Promise.all(order.slice(k, k + 8).map(load));
+})();
+
+function nearest(i){
+  for (let d = 0; d < FRAMES; d++) for (const j of [i - d, i + d]) {
+    if (j < 0 || j >= FRAMES || (i < CUT) !== (j < CUT)) continue;   // не перескакивать через склейку
+    const im = imgs[j]; if (im && im.complete && im.naturalWidth) return im;
+  }
+  return null;
+}
+let cw = 0, ch = 0;
+function size(){
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  cw = cv.clientWidth; ch = cv.clientHeight;
+  cv.width = Math.round(cw * dpr); cv.height = Math.round(ch * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  dirty = true;
+}
+const narrow = () => cw / ch < 1.1;
+function draw(i, zoom){
+  const im = nearest(i); if (!im) return;
+  // где фура в кадре: первый ракурс — по центру, во втором она уезжает вправо
+  const fx = i < CUT ? .45 : .5 + (i - CUT) / (FRAMES - 1 - CUT) * .22;
+  if (narrow()) {                                  // телефон: кадр сверху, текст ниже
+    const h = ch * .5, s = h / im.naturalHeight, w = im.naturalWidth * s;
+    const x = Math.min(0, Math.max(cw - w, cw * .5 - w * fx));
+    ctx.fillStyle = '#07112e'; ctx.fillRect(0, 0, cw, ch);
+    ctx.drawImage(im, x, 56, w, h);
+    return;
+  }
+  const s = Math.max(cw / im.naturalWidth, ch / im.naturalHeight) * zoom;
+  const w = im.naturalWidth * s, h = im.naturalHeight * s;
+  const x = Math.min(0, Math.max(cw - w, cw * .5 - w * fx)), y = (ch - h) / 2;
+  ctx.drawImage(im, x, y, w, h);
+}
+size();
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 100); });
+
+const story = $('.story'), chs = [0,1,2,3].map(i => $('#ch' + i));
+// [появилась, полностью, начала уходить, ушла]
+const W = [[-1,-1,.06,.11],[.12,.16,.33,.38],[.61,.65,.75,.79],[.81,.85,1.1,1.2]];
+// сцена «Граница»: въезжает .41–.45, держится, уезжает .56–.60
+const B_IN = [.41,.45], B_OUT = [.56,.60], SWITCH = .505;
+// километраж по ходу прокрутки (сколько пройдено к какому моменту)
+const KM = [[0,0],[.03,0],[.38,3300],[.505,3970],[.66,4350],[.97,8250],[1,8250]];
+const TOTAL = 8250;
+const stops = $$('.stop');
+stops.forEach(s => s.style.left = (+s.dataset.km / TOTAL * 100) + '%');
+$('#tickBorder').style.left = (3970 / TOTAL * 100) + '%';
+const PLACES = [[0,'Гуанчжоу'],[1,'в пути'],[3300,'Урумчи'],[3500,'к границе'],[3970,'граница КНР — РК'],[4100,'к Алматы'],[4350,'Алматы'],[4500,'в пути к Москве'],[8250,'Москва']];
+
+let cur = 0, lastFi = -1, lastP = -1;
+const storyP = () => { const r = story.getBoundingClientRect(); return clamp(-r.top / (r.height - innerHeight)); };
+const frameFor = p => p < SWITCH ? range(p, 0, B_IN[1]) * (CUT - 1) : CUT + range(p, B_OUT[0], 1) * (FRAMES - 1 - CUT);
+
+function render(){
+  const r = story.getBoundingClientRect();
+  if (r.bottom > 0) {                                        // история на экране
+    const p = storyP(), t = frameFor(p);
+    cur += (t - cur) * .2;
+    if ((cur < CUT) !== (t < CUT) || Math.abs(t - cur) < .05) cur = t;
+    const fi = Math.round(cur);
+    if (fi !== lastFi || dirty) {
+      const local = fi < CUT ? fi / (CUT - 1) : (fi - CUT) / (FRAMES - 1 - CUT);
+      draw(fi, 1.12 - local * .12);                          // лёгкий наезд камеры
+      lastFi = fi; dirty = false;
+    }
+    if (p !== lastP) { lastP = p; updateStory(p); }
+  }
+  requestAnimationFrame(render);
+}
+function updateStory(p){
+  chs.forEach((el, k) => {
+    const [a, b, c, d] = W[k];
+    const o = p < b ? range(p, a, b) : 1 - range(p, c, d);
+    el.style.opacity = o;
+    el.style.transform = `translateY(${(1 - o) * (p < b ? 30 : -30)}px)`;
+    el.classList.toggle('on', o > .5);
+    el.setAttribute('aria-hidden', o < .5);
+  });
+  // сцена «Граница»
+  const bi = ease(range(p, ...B_IN)), bo = ease(range(p, ...B_OUT));
+  $('#border').style.transform = `translateY(${(1 - bi) * 100 - bo * 100}%)`;
+  const tp = range(p, .46, .55);
+  $('#bTruck').style.left = (8 + tp * 84) + '%';
+  $('#road').classList.toggle('passed', tp > .5);
+  // шкала маршрута
+  const km = lerpKeys(p, KM), rp = km / TOTAL;
+  $('#fill').style.width = rp * 100 + '%';
+  $('#dot').style.left = rp * 100 + '%';
+  $('#km').textContent = (Math.round(km / 10) * 10).toLocaleString('ru-RU');
+  let place = PLACES[0][1]; PLACES.forEach(([k, n]) => { if (km >= k) place = n; });
+  $('#kmCity').textContent = place;
+  stops.forEach(s => s.classList.toggle('done', km >= +s.dataset.km - 1));
+  $('#hint').style.opacity = p > .02 ? 0 : 1;
+}
+requestAnimationFrame(render);
+
+/* ================= Блоки ниже ================= */
+const about = $('#about');
+about.innerHTML = about.innerHTML.replace(/(<em>.*?<\/em>)|([^\s<]+)/g, m => `<span class="w">${m}</span>`);
+const words = $$('#about .w');
+const steps = $$('.step'), stepsBox = $('#steps');
+const cards = $$('.scard');
+const nav = $('#nav'), waBtn = $('#waBtn');
+
+function onScroll(){
+  const sb = story.getBoundingClientRect().bottom;
+  nav.classList.toggle('light', sb < 70);
+  waBtn.classList.toggle('on', sb < innerHeight * .5);
+  // слова «О компании»
+  const r = about.getBoundingClientRect();
+  if (r.top < innerHeight && r.bottom > 0) {
+    const ap = clamp((innerHeight * .85 - r.top) / (r.height + innerHeight * .35));
+    const n = Math.round(ap * words.length);
+    words.forEach((w, i) => w.classList.toggle('lit', i < n));
+  }
+  // стопка карточек: накрытая карточка чуть уменьшается
+  cards.forEach((c, i) => {
+    const next = cards[i + 1]; if (!next) return;
+    const gap = next.getBoundingClientRect().top - c.getBoundingClientRect().top;
+    const t = clamp(1 - gap / c.offsetHeight);
+    c.style.transform = `scale(${1 - t * .05})`;
+    c.style.filter = `brightness(${1 - t * .12})`;
+  });
+  // шаги
+  const br = stepsBox.getBoundingClientRect();
+  if (br.top < innerHeight && br.bottom > 0) {
+    const mid = innerHeight * .55; let active = 0;
+    steps.forEach((s, i) => { if (s.getBoundingClientRect().top < mid) active = i; });
+    steps.forEach((s, i) => s.classList.toggle('on', i <= active));
+    $('#stepsFill').style.height = clamp((mid - br.top) / br.height) * (br.height - 20) + 'px';
+    $('#stepBig').textContent = String(active + 1).padStart(2, '0');
+  }
+}
+addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', onScroll); onScroll();
+
+// появление и счётчики
+const counter = el => {
+  const to = +el.dataset.to, t0 = performance.now(), d = 1400;
+  const step = now => { const q = Math.min(1, (now - t0) / d); el.textContent = Math.round(to * (1 - Math.pow(1 - q, 3))).toLocaleString('ru-RU'); if (q < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+};
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in'); e.target.querySelectorAll('.count').forEach(counter); io.unobserve(e.target);
+}), {threshold:.15});
+$$('.rv').forEach(el => io.observe(el));
+
+// время в Гуанчжоу
+const tick = () => $('#gzTime').textContent = new Date().toLocaleTimeString('ru-RU', {timeZone:'Asia/Shanghai', hour:'2-digit', minute:'2-digit'});
+tick(); setInterval(tick, 20000);
+
+// калькулятор
+const btns = $$('#seg button'); let rate = 2.4, days = '18–25'; const RUB = 95; // ориентировочный курс — заменить
+btns.forEach(b => b.addEventListener('click', () => {
+  btns.forEach(x => { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+  b.classList.add('on'); b.setAttribute('aria-checked', 'true');
+  rate = +b.dataset.rate; days = b.dataset.days; calc();
+}));
+function calc(){
+  const w = +$('#w').value, v = +$('#v').value;
+  $('#wOut').textContent = w; $('#vOut').textContent = v.toFixed(1);
+  const dens = w / v; $('#dens').textContent = Math.round(dens);
+  let r = rate; if (dens < 100) r *= 1.35; else if (dens < 200) r *= 1.1;   // лёгкий объёмный груз дороже
+  $$('.chk input:checked').forEach(c => r += +c.dataset.add);
+  const total = Math.round(w * r);
+  $('#sum').textContent = total.toLocaleString('ru-RU'); $('#rub').textContent = Math.round(total * RUB).toLocaleString('ru-RU'); $('#days').textContent = days;
+}
+['#w', '#v'].forEach(s => $(s).addEventListener('input', calc)); $$('.chk input').forEach(c => c.addEventListener('change', calc)); calc();
+
+// вопросы
+$$('.q button').forEach(b => b.addEventListener('click', () => { const o = b.parentElement.classList.toggle('open'); b.setAttribute('aria-expanded', o); }));
+
+// окно заявки
+const modal = $('#modal'); let lastFocus;
+const open = e => { e.preventDefault(); lastFocus = document.activeElement; modal.classList.add('on'); document.body.style.overflow = 'hidden'; setTimeout(() => modal.querySelector('input').focus(), 50); };
+const close = () => { modal.classList.remove('on'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
+$$('[data-open]').forEach(b => b.addEventListener('click', open));
+$$('[data-close]').forEach(b => b.addEventListener('click', close));
+modal.addEventListener('click', e => { if (e.target === modal) close(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('on')) close(); });
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  // TODO: подключить отправку заявки (почта / WhatsApp / бот)
+  $('#form').style.display = 'none'; $('#ok').style.display = 'block';
+});
+
+// плавный переход по ссылкам меню
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const id = a.getAttribute('href'); if (id.length < 2) return;
+  e.preventDefault(); document.querySelector(id).scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+}));
+})();
+</script>
+</body>
+</html>
