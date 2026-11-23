@@ -6,6 +6,7 @@
 <title>M9999 Cargo — карго из Китая в Россию и Казахстан через Алматы</title>
 <meta name="description" content="Карго из Гуанчжоу в Россию и Казахстан. Выкуп с 1688 и Taobao, проверка с фото и видео, упаковка, страховка, доставка фурой через Казахстан. Офисы в Гуанчжоу, Алматы и Москве.">
 <meta name="theme-color" content="#07112e">
+<noscript><style>.pre{display:none}</style></noscript>
 <meta property="og:title" content="M9999 Cargo — карго из Китая до двери">
 <meta property="og:description" content="Гуанчжоу → Алматы → Москва. Выкуп, проверка, упаковка и доставка фурой через Казахстан.">
 <meta property="og:image" content="img/poster.jpg">
@@ -351,12 +352,38 @@ footer{background:var(--night);color:#98a2c2;padding:70px 0 calc(34px + env(safe
 .ok__mark{width:64px;height:64px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:30px;margin:0 auto}
 @media (max-width:480px){.modal__row{grid-template-columns:1fr;gap:0}}
 
+/* ===== Прелоадер ===== */
+.pre{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse 70% 60% at 50% 45%,#122a78 0%,#0a1a52 45%,var(--night) 100%);color:#fff;display:grid;place-items:center;padding:24px;transition:opacity .6s ease,visibility .6s}
+.pre.done{opacity:0;visibility:hidden}
+.pre__in{width:min(520px,100%);text-align:center}
+.pre__logo{height:clamp(30px,5vw,44px);width:auto;margin:0 auto 34px}
+.pre__num{font:italic 900 clamp(64px,12vw,120px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pre__num small{font-size:.4em;color:var(--sun2);margin-left:4px}
+.pre__bar{position:relative;height:3px;margin:30px 0 16px;border-radius:3px;background:rgba(255,255,255,.18)}
+.pre__bar i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:3px;background:linear-gradient(90deg,var(--sun),var(--sun2))}
+.pre__truck{position:absolute;left:0;bottom:6px;width:64px}
+.pre__cities{display:flex;justify-content:space-between;font-size:13px;font-weight:600;letter-spacing:.06em;color:rgba(255,255,255,.6);text-transform:uppercase}
+.pre__cities span.on{color:#fff}
+.pre__note{margin-top:26px;font-size:14px;color:rgba(255,255,255,.55)}
+html.loading,html.loading body{overflow:hidden}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.hint i::after{animation:none}.about__text .w{opacity:1}}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('loading');if('scrollRestoration' in history)history.scrollRestoration='manual';</script>
+<div class="pre" id="pre" role="status" aria-live="polite" aria-label="Загрузка сайта">
+  <div class="pre__in">
+    <img class="pre__logo" src="img/logo-white.png" alt="M9999 Cargo">
+    <div class="pre__num"><span id="preNum">0</span><small>%</small></div>
+    <div class="pre__bar"><i id="preBar"></i>
+      <svg class="pre__truck" id="preTruck" viewBox="0 0 150 54" aria-hidden="true"><rect x="2" y="4" width="104" height="36" rx="3" fill="#fff"/><text x="54" y="28" text-anchor="middle" font-family="Exo 2,sans-serif" font-style="italic" font-weight="900" font-size="15" fill="#1d5cff">M9999</text><path d="M110 14h20l14 14v12h-34z" fill="#fff"/><path d="M114 18h14l9 9h-23z" fill="#0a1a52"/><circle cx="22" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/><circle cx="40" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/><circle cx="86" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/><circle cx="130" cy="46" r="7" fill="#0a1a52" stroke="#fff" stroke-width="2"/></svg>
+    </div>
+    <div class="pre__cities"><span class="on" data-at="0">Гуанчжоу</span><span data-at="50">Алматы</span><span data-at="100">Москва</span></div>
+    <p class="pre__note">Загружаем маршрут — несколько секунд</p>
+  </div>
+</div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="wa" viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.8-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5.1 9.9 10 5.2 16 5.2s10.9 4.7 10.9 10.6S22 26.4 16 26.4zm6-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 2.9 1.1 3.4.9 4.1.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></symbol>
@@ -723,8 +750,10 @@ function load(i){
   return new Promise(res => {
     const im = new Image();
     im.decoding = 'async';
-    im.onload = im.onerror = () => { loaded++; dirty = true; $('#loadbar').style.width = (loaded / FRAMES * 100) + '%'; if (loaded === FRAMES) $('#loadbar').style.opacity = 0; res(); };
+    const done = () => { loaded++; dirty = true; $('#loadbar').style.width = (loaded / FRAMES * 100) + '%'; if (loaded === FRAMES) $('#loadbar').style.opacity = 0; res(); };
     im.src = `${dir}/f${String(i + 1).padStart(3, '0')}.webp`;
+    // распаковываем кадр заранее, чтобы при прокрутке не было подтормаживаний
+    (im.decode ? im.decode() : Promise.reject()).then(done, () => im.complete ? done() : (im.onload = im.onerror = done));
     imgs[i] = im;
   });
 }
@@ -734,8 +763,34 @@ function load(i){
   const order = [];
   for (let i = 4; i < FRAMES; i += 4) order.push(i);
   for (let i = 1; i < FRAMES; i++) if (i % 4) order.push(i);
-  for (let k = 0; k < order.length; k += 8) await Promise.all(order.slice(k, k + 8).map(load));
+  const DRAFT = Math.ceil((FRAMES - 4) / 4);
+  for (let k = 0; k < order.length; k += 10) {
+    await Promise.all(order.slice(k, k + 10).map(load));
+    if (k + 10 >= DRAFT) draftReady = true;
+  }
 })();
+
+/* ===== Прелоадер: ждём кадры фуры и шрифты ===== */
+let draftReady = false, fontsReady = false, shown = 0;
+const t0 = performance.now(), pre = $('#pre');
+document.fonts && document.fonts.ready.then(() => fontsReady = true); if (!document.fonts) fontsReady = true;
+const preCities = $$('.pre__cities span');
+function preTick(){
+  const real = loaded / FRAMES * 100;
+  shown += (real - shown) * .12;                              // плавный счётчик
+  const n = Math.min(100, Math.round(shown));
+  $('#preNum').textContent = n; $('#preBar').style.width = n + '%'; $('#preTruck').style.left = n + '%'; $('#preTruck').style.transform = `translateX(-${n}%)`;
+  preCities.forEach(c => c.classList.toggle('on', n >= +c.dataset.at));
+  const t = performance.now() - t0;
+  const ready = (loaded === FRAMES && n >= 99) || (draftReady && fontsReady && t > 6000) || t > 15000;
+  if (ready) {
+    $('#preNum').textContent = 100; $('#preBar').style.width = '100%'; $('#preTruck').style.left = '100%'; $('#preTruck').style.transform = 'translateX(-100%)';
+    setTimeout(() => { pre.classList.add('done'); document.documentElement.classList.remove('loading'); scrollTo(0, 0); }, 250);
+    return;
+  }
+  requestAnimationFrame(preTick);
+}
+scrollTo(0, 0); requestAnimationFrame(preTick);
 
 function nearest(i){
   for (let d = 0; d < FRAMES; d++) for (const j of [i - d, i + d]) {
